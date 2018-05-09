@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-sm-3">
+
+		{# {% include '/hub/profile.html.twig' %} #}
+
+		{{ render (controller('AppBundle:Hub:profile', {'username': username} )) }}
+
+	</div>	
+	<div class="col-sm-9">
+
+		{# {% include '/hub/repos.html.twig' %} #}
+		{{ render (controller('AppBundle:Hub:repos', {'username': username} )) }}
+
+	</div>
+
+{% endblock body %}
+
+
+
