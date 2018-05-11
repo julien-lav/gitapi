@@ -34,8 +34,20 @@ class HubApi
 	{
 		$client = new \GuzzleHttp\Client();
 		$response = $client->request('GET', 'https://api.github.com/users/' . $username . '/repos');
+		/*
+		$response2 = $client->request('GET', 'https://api.github.com/users/' . $username . '/repos?page=2');
+		
+		$response3 = $client->request('GET', 'https://api.github.com/users/' . $username . '/repos?page=3');
+
+		dump($response3);
+		exit();
+		*/
+		//if !empty faire un while avec ?page=i
+
 
 		$data = json_decode($response->getBody()->getContents(), true);
+		//$data2 = json_decode($response2->getBody()->getContents(), true);
+
 
 		return  [
 					'username' => $username,
@@ -44,6 +56,7 @@ class HubApi
 		            	return $currentRepo['stargazers_count'] > $mostStars ? $currentRepo['stargazers_count'] : $mostStars;
 		            }, 0),
 		            'repos' => $data,
+		            //'repos2' => $data2
             	];
 
 	}
